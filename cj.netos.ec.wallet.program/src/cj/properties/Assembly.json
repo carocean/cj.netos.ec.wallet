@@ -52,7 +52,7 @@
 			extName : ".class|.json|.xml",
 			exoterical:"true"
 		},{
-			package : "cj.netos.ec.wallet.services",
+			package : "cj.netos.ec.wallet.cmd",
 			extName : ".class|.json|.xml",
 			exoterical:"true"
 		},{
