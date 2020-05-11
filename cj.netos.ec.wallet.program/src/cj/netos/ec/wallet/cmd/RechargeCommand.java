@@ -74,6 +74,7 @@ public class RechargeCommand implements IConsumerCommand {
         String appSecret = site.getProperty("appSecret");
         String portsurl = site.getProperty("ports.oc.wallet");
         LongString snLS = (LongString) properties.getHeaders().get("sn");
+        LongString codeLS = (LongString) properties.getHeaders().get("code");
         LongString msgLS = (LongString) properties.getHeaders().get("message");
         long amountLS = (long) properties.getHeaders().get("amount");
 
@@ -81,7 +82,7 @@ public class RechargeCommand implements IConsumerCommand {
         String sign = Encript.md5(String.format("%s%s%s", appKey, nonce, appSecret));
 
         final Request request = new Request.Builder()
-                .url(String.format("%s?sn=%s&amount=%s&message=%s", portsurl, snLS, amountLS, msgLS))
+                .url(String.format("%s?sn=%s&amount=%s&code=%s&message=%s", portsurl, snLS, amountLS,codeLS, msgLS))
                 .addHeader("Rest-Command", "rechargeDone")
                 .addHeader("app-id", appid)
                 .addHeader("app-key", appKey)
