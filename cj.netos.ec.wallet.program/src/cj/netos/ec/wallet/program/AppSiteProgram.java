@@ -19,7 +19,7 @@ public class AppSiteProgram extends GatewayAppSiteProgram {
             rabbitMQ.open(assembliesHome);
             rabbitMQ.acceptConsumer(new DeliveryCommandConsumer(site));
         } catch (RabbitMQException e) {
-            throw new CircuitException(e.getStatus(),e.getMessage());
+            throw new CircuitException(e.getStatus(), e.getMessage());
         }
 
     }

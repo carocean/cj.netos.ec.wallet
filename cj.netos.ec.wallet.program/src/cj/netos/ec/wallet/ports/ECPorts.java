@@ -11,6 +11,7 @@ import cj.studio.ecm.annotation.CjServiceRef;
 import cj.studio.ecm.annotation.CjServiceSite;
 import cj.studio.ecm.net.CircuitException;
 import cj.studio.openport.ISecuritySession;
+import okhttp3.OkHttpClient;
 
 @CjService(name = "/ec.ports")
 public class ECPorts implements IECPorts {
@@ -18,7 +19,7 @@ public class ECPorts implements IECPorts {
     IRabbitMQConsumer rabbitMQConsumer;
     @CjServiceSite
     IServiceSite site;
-
+    OkHttpClient client;
     private void checkRights(ISecuritySession securitySession) throws CircuitException {
         if (!securitySession.roleIn("platform:administrators") && !securitySession.roleIn("tenant:administrators") && !securitySession.roleIn("app:administrators")) {
             throw new CircuitException("801", "无权访问");
